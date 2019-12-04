@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -58,6 +59,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        choice1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkAnswer1();
+            }
+        });
+
+        choice2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkAnswer2();
+            }
+        });
+
 
     }
 
@@ -101,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     }
+
                 },
                 new Response.ErrorListener() {
                     @Override
@@ -121,6 +137,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    public void checkAnswer1() {
+        if (choice1.getText() == "True") {
+            Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Incorrect!", Toast.LENGTH_SHORT).show();
+
+        }
+
+        getRandomQuestion();
+    }
+
+    public void checkAnswer2() {
+        if (choice2.getText() == "False") {
+            Toast.makeText(this, "Incorrect!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
+
+        }
+
+        getRandomQuestion();
+    }
 
 
 }
