@@ -14,8 +14,10 @@
         android:textSize="18sp"
         app:fontFamily="casual"
         app:layout_constraintBottom_toTopOf="@+id/next_button"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="167dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/next_button"
@@ -30,18 +32,40 @@
         app:layout_constraintTop_toBottomOf="@+id/question_text" />
 
 
+    <TextView
+        android:id="@+id/timer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/score_text"
+        tools:layout_editor_absoluteY="133dp" />
+
+    <TextView
+        android:id="@+id/score_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/timer_text"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="133dp" />
+
     <Button
         android:id="@+id/choice_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_bright"
         android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/next_button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/choice_1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintVertical_bias="0.512" />
 
     <Button
         android:id="@+id/choice_1"
@@ -49,11 +73,12 @@
         android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_bright"
         android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/next_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/choice_2"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintVertical_bias="0.512" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

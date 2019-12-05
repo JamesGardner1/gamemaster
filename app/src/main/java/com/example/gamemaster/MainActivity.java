@@ -1,10 +1,10 @@
 package com.example.gamemaster;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,14 +22,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
+
 import java.util.Collections;
-import java.util.Iterator;
+
 import java.util.List;
-import java.util.ListIterator;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -38,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
     Button choice1;
     Button choice2;
     Button nextButton;
+    TextView timer;
+    TextView scoreText;
+
+    public int counter;
+    public int score;
 
     private static final String url = "https://opentdb.com/api.php?amount=1&category=15&difficulty=easy&type=boolean";
     private static final String TAG = "RANDOM_QUESTION";
@@ -51,6 +55,23 @@ public class MainActivity extends AppCompatActivity {
         choice1 = findViewById(R.id.choice_1);
         choice2 = findViewById(R.id.choice_2);
         nextButton = findViewById(R.id.next_button);
+        timer = findViewById(R.id.timer_text);
+        scoreText = findViewById(R.id.score_text);
+
+        new CountDownTimer(50000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timer.setText(String.valueOf(counter));
+                counter++;
+            }
+            @Override
+            public void onFinish() {
+                timer.setText("Finished");
+
+            }
+        }.start();
+
+
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
     public void checkAnswer1() {
         if (choice1.getText() == "True") {
             Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
+            updateScore();
         } else {
             Toast.makeText(this, "Incorrect!", Toast.LENGTH_SHORT).show();
 
@@ -154,13 +176,17 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Incorrect!", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
+            updateScore();
 
         }
 
         getRandomQuestion();
     }
 
-
+    public void updateScore() {
+        score = score + 10;
+        scoreText.setText(String.valueOf(score));
+    }
 }
 
 
